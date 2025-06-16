@@ -1,0 +1,13 @@
+{
+  "repository": {
+    "owner": "masudranaxpert",
+    "repo": "ghoroya-oishorjo",
+    "branch": "main",
+    "url": "https://github.com/masudranaxpert/ghoroya-oishorjo"
+  },
+  "project": {
+    "name": "Ghoroya Oishorjo",
+    "description": "Laravel E-commerce Authentication System with Admin Panel",
+    "type": "Laravel"
+  }
+} 
