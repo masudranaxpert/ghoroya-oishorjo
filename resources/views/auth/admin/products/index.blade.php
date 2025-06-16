@@ -97,7 +97,20 @@
                     </div>
                     
                     @if($product->description)
-                        <p class="text-gray-600 text-sm mb-3 line-clamp-2">{{ Str::limit($product->description, 80) }}</p>
+                        <p class="text-gray-600 text-sm mb-2 line-clamp-2">{{ Str::limit($product->description, 80) }}</p>
+                    @endif
+                    
+                    @if($product->keywords)
+                        <div class="mb-3">
+                            <p class="text-xs text-gray-400 mb-1">Keywords:</p>
+                            <div class="flex flex-wrap gap-1">
+                                @foreach(explode(',', $product->keywords) as $keyword)
+                                    @if(trim($keyword))
+                                        <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">{{ trim($keyword) }}</span>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
                     @endif
                     
                     <!-- Price -->

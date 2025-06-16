@@ -164,10 +164,30 @@
                     <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Product Description</label>
                     <textarea id="description" 
                               name="description" 
-                              rows="5" 
+                              rows="4" 
                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" 
                               placeholder="Describe your artificial plant product...">{{ old('description') }}</textarea>
                     @error('description')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Keywords/Alternative Names -->
+                <div>
+                    <label for="keywords" class="block text-sm font-medium text-gray-700 mb-2">
+                        Keywords / Alternative Names
+                        <span class="text-gray-500 text-xs">(Optional)</span>
+                    </label>
+                    <textarea id="keywords" 
+                              name="keywords" 
+                              rows="3" 
+                              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200" 
+                              placeholder="Enter alternative names, search keywords separated by commas... e.g. artificial tree, fake plant, decorative foliage, indoor greenery">{{ old('keywords') }}</textarea>
+                    <p class="text-sm text-gray-500 mt-1">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        Add comma-separated keywords that customers might search for this product
+                    </p>
+                    @error('keywords')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>

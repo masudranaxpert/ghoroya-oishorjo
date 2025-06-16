@@ -26,6 +26,7 @@ class AdminProductController extends Controller
             $query->where(function($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
                   ->orWhere('description', 'like', "%{$search}%")
+                  ->orWhere('keywords', 'like', "%{$search}%")
                   ->orWhereHas('categories', function($cat) use ($search) {
                       $cat->where('name', 'like', "%{$search}%");
                   });
@@ -57,6 +58,7 @@ class AdminProductController extends Controller
             'subcategories' => 'nullable|array',
             'subcategories.*' => 'nullable|exists:subcategories,id',
             'description' => 'nullable|string',
+            'keywords' => 'nullable|string',
             'price' => 'required|numeric|min:0',
             'sale_price' => 'nullable|numeric|min:0',
             'stock' => 'required|integer|min:0',
@@ -69,7 +71,7 @@ class AdminProductController extends Controller
                 ->withInput();
         }
 
-        $data = $request->only(['name', 'description', 'price', 'sale_price', 'stock']);
+        $data = $request->only(['name', 'description', 'keywords', 'price', 'sale_price', 'stock']);
         
         // Handle image upload
         if ($request->hasFile('image')) {
@@ -87,6 +89,7 @@ class AdminProductController extends Controller
         }
 
         $data['status'] = 'active';
+        $data['slug'] = Str::slug($request->name);
 
         $product = Product::create($data);
 

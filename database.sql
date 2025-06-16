@@ -69,6 +69,7 @@ CREATE TABLE `products` (
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL UNIQUE,
   `description` text DEFAULT NULL,
+  `keywords` text DEFAULT NULL,
   `price` decimal(10,2) NOT NULL,
   `sale_price` decimal(10,2) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
