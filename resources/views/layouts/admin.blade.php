@@ -88,11 +88,19 @@
                     </div>
                     
                     <!-- Categories -->
-                    <a href="#" class="group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg text-admin-300 hover:bg-admin-700/50 hover:text-white transition-all duration-200">
-                        <div class="w-8 h-8 rounded-lg flex items-center justify-center mr-3 bg-admin-700/50 group-hover:bg-admin-600/50">
-                            <i class="fas fa-tags text-sm text-admin-300 group-hover:text-white"></i>
+                    <a href="{{ route('admin.categories') }}" class="group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg {{ request()->routeIs('admin.categories') ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md' : 'text-admin-300 hover:bg-admin-700/50 hover:text-white' }} transition-all duration-200">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center mr-3 {{ request()->routeIs('admin.categories') ? 'bg-white/20' : 'bg-admin-700/50 group-hover:bg-admin-600/50' }}">
+                            <i class="fas fa-tags text-sm {{ request()->routeIs('admin.categories') ? 'text-white' : 'text-admin-300 group-hover:text-white' }}"></i>
                         </div>
                         <span class="font-medium">Categories</span>
+                    </a>
+                    
+                    <!-- Home Settings -->
+                    <a href="{{ route('admin.home.settings') }}" class="group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg {{ request()->routeIs('admin.home.settings') ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md' : 'text-admin-300 hover:bg-admin-700/50 hover:text-white' }} transition-all duration-200">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center mr-3 {{ request()->routeIs('admin.home.settings') ? 'bg-white/20' : 'bg-admin-700/50 group-hover:bg-admin-600/50' }}">
+                            <i class="fas fa-home text-sm {{ request()->routeIs('admin.home.settings') ? 'text-white' : 'text-admin-300 group-hover:text-white' }}"></i>
+                        </div>
+                        <span class="font-medium">Home Settings</span>
                     </a>
                     
                     <!-- Orders -->

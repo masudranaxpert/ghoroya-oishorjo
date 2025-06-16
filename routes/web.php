@@ -5,11 +5,10 @@ use App\Auth\Controllers\AdminAuthController;
 use App\Auth\Controllers\AdminCategoryController;
 use App\Auth\Controllers\AdminProductController;
 use App\Auth\Controllers\CustomerAuthController;
+use App\Http\Controllers\HomeController;
 
-// Homepage redirect
-Route::get('/', function () {
-    return redirect()->route('customer.login');
-});
+// Homepage 
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Admin Authentication Routes (Hidden URL)
 Route::prefix('adminpanel')->name('admin.')->group(function () {
@@ -40,6 +39,11 @@ Route::prefix('adminpanel')->name('admin.')->group(function () {
         Route::put('/products/{product}', [AdminProductController::class, 'update'])->name('products.update');
         Route::delete('/products/{product}', [AdminProductController::class, 'destroy'])->name('products.delete');
         Route::get('/categories/{category}/subcategories', [AdminProductController::class, 'getSubcategories'])->name('categories.subcategories');
+        
+        // Home Page Settings
+        Route::get('/home-settings', [HomeController::class, 'admin'])->name('home.settings');
+        Route::post('/slider/upload', [HomeController::class, 'uploadSlider'])->name('slider.upload');
+        Route::post('/slider/delete', [HomeController::class, 'deleteSlider'])->name('slider.delete');
         
         Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
     });

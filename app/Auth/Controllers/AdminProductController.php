@@ -89,7 +89,18 @@ class AdminProductController extends Controller
         }
 
         $data['status'] = 'active';
-        $data['slug'] = Str::slug($request->name);
+        
+        // Generate unique slug
+        $baseSlug = Str::slug($request->name);
+        $slug = $baseSlug;
+        $counter = 1;
+        
+        while (Product::where('slug', $slug)->exists()) {
+            $slug = $baseSlug . '-' . $counter;
+            $counter++;
+        }
+        
+        $data['slug'] = $slug;
 
         $product = Product::create($data);
 
